@@ -1,3 +1,11 @@
+---
+filters: ["badges"]
+parent: filters-index.html
+desc: This file has badge examples
+categories: ["Filters"]
+title: Badge examples
+---
+
 # Badges
 
 Uses shields.io to make badges out of links. For example:

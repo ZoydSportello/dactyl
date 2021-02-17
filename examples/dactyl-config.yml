@@ -2,39 +2,68 @@ content_path: content
 template_path: templates
 template_static_path: template_assets
 filter_paths:
+    - dactyl/
+    - custom_filters/
+    - more_custom_filters/
+filters:
     - custom_filters
     - more_custom_filters
+    - include_url
+    - include_code
+    - badges
+    - patriots
+    - buttonize
+    - multicode_tabs
+    - xrefs
 
 targets:
     -   name: everything
         display_name: Dactyl Examples
         filters:
+            - add_version
+            - badges
+            - buttonize
+            - callouts
             - demote_headers
+            - include_url
+            - link_replacement
+            - multicode_tabs
+            - xrefs
         demote_headers_pdf_only: true
-        stylesheet: template_assets/dactyl.css
+        #stylesheet: template_assets/dactyl.css
         foo: "fooooooo"
 
     -   name: filterdemos
         display_name: Target with just the filter example pages
+    
 
     -   name: conditionals
         display_name: Conditional Text Target
         condition: tests-2
 
 pages:
+   # -   name: All Filters
+   #     html: all-filters.html
+   #     category: Filter Demos 
+   #     section_header: true
+   #     parent: filters-index.html
+   #     template: landing.html
+   #     targets:
+   #         - filterdemos
+   #         - everything
+    
     -   name: Tests
         html: tests-index.html
         category: Tests
         section_header: true
-        parent: index.html
         template: landing.html
         targets:
             - everything
 
     -   md: includes.md
-        category: Tests
+        #category: Tests
         parent: tests-index.html
-        sidebar: left_only
+        #sidebar: left_only
         targets:
             - everything
 
@@ -102,87 +131,87 @@ pages:
     -   name: Filters
         category: Filters
         section_header: true
-        parent: index.html
+        #parent: index.html
+        html: filters-index.html
         template: landing.html
         targets:
             - everything
             - filterdemos
 
-    -   md: filter-examples/callouts.md
-        category: Filters
-        parent: filters.html
+    -   md: filter-examples/badges.md
+        #category: Filters
+        #parent: filters-index.html
         targets:
             - everything
             - filterdemos
-        filters:
-            - callouts
-
-    -   md: filter-examples/xrefs.md
-        category: Filters
-        parent: filters.html
-        targets:
-            - everything
-            - filterdemos
-        filters:
-            - xrefs
-
+        #filters:
+        #    - badges
+        
     -   md: filter-examples/buttonize.md
         category: Filters
-        parent: filters.html
+        parent: filters-index.html
         targets:
             - everything
             - filterdemos
         filters:
             - buttonize
 
-    -   md: filter-examples/patriots.md
-        html: filter-examples-patriots.html
-        category: Filters
-        parent: filters.html
+    -   md: filter-examples/callouts.md
+        parent: filters-index.html
         targets:
             - everything
             - filterdemos
         filters:
-            - patriots
+            - callouts
 
-    -   md: filter-examples/patriots.md
-        name: Custom Filter 2
-        html: filter-examples-patriots2.html
-        category: Filters
-        parent: filters.html
-        targets:
-            - everything
-            - filterdemos
-        filters:
-            - patriots2
 
-    -   md: filter-examples/badges.md
-        category: Filters
-        parent: filters.html
-        targets:
-            - everything
-            - filterdemos
-        filters:
-            - badges
+    #-   md: filter-examples/patriots.md
+    #   html: filter-examples-patriots.html
+    #     category: Filters
+    #    parent: filters.html
+    #    #targets:
+    #        - everything
+    #        - filterdemos
+    #    filters:
+    #        - patriots
 
-    -   md: filter-examples/include_code.md
+    #-   md: filter-examples/patriots.md
+    #    name: Custom Filter 2
+    #    html: filter-examples-patriots2.html
+    #    category: Filters
+    #    parent: filters.html
+    #    targets:
+    #        - everything
+    #        - filterdemos
+    #    filters:
+    #        - patriots2
+    
+    -   md: filter-examples/include_url.md
         category: Filters
-        parent: filters.html
+        parent: filters-index.html
         targets:
             - everything
             - filterdemos
         filters:
-            - include_code
+            - include_url
 
     -   md: filter-examples/multicode_tabs.md
         category: Filters
-        parent: filters.html
+        parent: filters-index.html
         targets:
             - everything
             - filterdemos
         filters:
             - multicode_tabs
 
+    -   md: filter-examples/xrefs.md
+        category: Filters
+        parent: filters-index.html
+        targets:
+            - everything
+            - filterdemos
+        filters:
+            - xrefs
 
 # -------------------- Style Checker Rules ------------------------
 word_substitutions_file: plainlanguage_words.yaml

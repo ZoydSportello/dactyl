@@ -1,0 +1,54 @@
+content_path: examples/content
+template_path: dactyl/templates
+template_static_path: examples/template_assets/
+filter_paths:
+    - dactyl/
+    - examples/custom_filters/
+    - examples/more_custom_filters/
+filters:
+    - custom_filters
+    - more_custom_filters
+    - include_url
+    - include_code
+    - badges
+    - patriots
+    - buttonize
+    - multicode_tabs
+    - xrefs
+
+targets:
+    -   name: superfilter
+        display_name: Superset of example filters
+        filters:
+            - demote_headers
+        #demote_headers_pdf_only: true
+        #stylesheet: examples/template_assets/dactyl.css
+        #foo: "fooooooo"
+
+pages:
+
+    -   name: Filters
+        category: Filters
+        section_header: true
+        parent: index.html
+        template: landing.html
+        targets:
+            - superfilter
+    
+    -   md: filter-examples/badges.md
+        badges: badges.html
+        sidebar: right_only
+        targets:
+            - superfilter
+    
+    -   md: filter-examples/include_url.md
+        sidebar: right_only
+        targets:
+            - superfilter
+        filters:
+            - include_url
+
+
+# -------------------- Style Checker Rules ------------------------
+word_substitutions_file: plainlanguage_words.yaml
+phrase_substitutions_file: plainlanguage_phrases.yaml

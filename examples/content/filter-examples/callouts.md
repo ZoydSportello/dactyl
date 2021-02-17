@@ -1,4 +1,4 @@
-# Callouts Demonstration #
+# Callouts Demonstration
 
 **Tip:** Callouts are a great way to call attention to particular bits of information.
 
